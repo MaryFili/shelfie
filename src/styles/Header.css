@@ -1,7 +1,9 @@
 .headerContainer {
+    width: 100%;
     color: #fff;
     display: flex;
     justify-content: end;
+
 }
 
 .topWrapper {
@@ -42,7 +44,7 @@
 .navbar {
 
     display: none;
-    transition: 2s eas
+    transition: 2s ease;
 }
 
 .activeNavbar {

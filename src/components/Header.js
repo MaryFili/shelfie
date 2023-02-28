@@ -20,14 +20,13 @@ export default function Header() {
         <header>
             <div className='headerContainer'>
 
-                {/* h1 and hamburger menu */}
+                {/* logo and hamburger menu */}
 
-                {/* <h1 className='webTitle'>FIND MY BOOK</h1> */}
+
                 <NavLink className='logo' to="/"><img src={logo} className='logo' alt='logo' /></NavLink>
                 <div className={active ? 'hiddenHamburger' : ' hamburgerMenu'}>
                     <RxHamburgerMenu className='hamburger' onClick={showElem} />
                 </div>
-
                 <nav className={active ? 'activeNavbar' : 'navbar'}>
                     <div className="links">
                         <div className="closed">
