@@ -21,6 +21,7 @@ main {
     justify-content: space-evenly;
     align-items: center;
     gap: 1em;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -32,15 +33,28 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 3em;
     border-radius: 1em;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
+    flex-basis: auto;
+
+}
+
+.mainContainer h1,
+.mainContainer h2 {
+    font-size: 2em;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .card button {
     padding: .8em;
     border-radius: 15px;
-
     background-image: linear-gradient(to right, #2b5876 0%, #4e4376 51%, #2b5876 100%);
     margin: 10px;
     padding: 15px 45px;
@@ -52,6 +66,8 @@ main {
     box-shadow: 0 0 10px #eee;
     border-radius: 10px;
     display: block;
+    margin-top: 1em;
+
 }
 
 button:hover {
