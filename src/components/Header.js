@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoClose } from "react-icons/io5"
+import logo from '../img/shelfie.png'
 import '../styles/Header.css'
 
 export default function Header() {
@@ -21,7 +22,8 @@ export default function Header() {
 
                 {/* h1 and hamburger menu */}
 
-                <h1 className='webTitle'>FIND MY BOOK</h1>
+                {/* <h1 className='webTitle'>FIND MY BOOK</h1> */}
+                <NavLink className='logo' to="/"><img src={logo} className='logo' alt='logo' /></NavLink>
                 <div className={active ? 'hiddenHamburger' : ' hamburgerMenu'}>
                     <RxHamburgerMenu className='hamburger' onClick={showElem} />
                 </div>
