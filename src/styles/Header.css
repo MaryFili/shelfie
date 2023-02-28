@@ -1,0 +1,97 @@
+.headerContainer {
+    color: #fff;
+    display: flex;
+    justify-content: end;
+}
+
+.topWrapper {
+    width: 100%;
+    display: flex;
+}
+
+.webTitle {
+    display: inline;
+    margin-right: auto;
+    margin-top: 1.4em;
+    margin-left: 1.4em;
+
+}
+
+
+
+.hamburger {
+    margin: 1em;
+    cursor: pointer;
+    font-size: 3em;
+
+
+}
+
+.hiddenHamburger {
+    display: none;
+
+}
+
+.navbar {
+
+    display: none;
+    transition: 2s eas
+}
+
+.activeNavbar {
+    display: initial;
+    transition: 2s ease;
+    background-color: black;
+    height: 100vh;
+    width: 20%;
+
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+a {
+    text-decoration: none;
+    padding: .5em;
+    /* margin-left: 16px; */
+    color: #FFF;
+    /* letter-spacing: .1ch; */
+    font-size: clamp(1rem, 0.7153rem + 1.6368vw, 1.2rem);
+    font-size: 1.3rem;
+    margin-block: 2.5rem;
+}
+
+.menuIcon {
+    margin-left: auto;
+    margin-top: .5em;
+    margin-right: .5em;
+    font-size: 2.5em;
+
+}
+
+
+
+
+.close {
+    /* display: block; */
+    margin: 0 auto;
+    font-size: 3em;
+
+    color: #FFF;
+
+}
+
+.hiddenLogin {
+    display: none;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 1em;
+}
