@@ -25,24 +25,7 @@ export default function BookShelf() {
         };
         getBooks();
     }, []);
-    console.log({ bookShelf });
 
-    const updateBook = async (bookId, updates) => {
-        const bookRef = doc(db, 'bookshelf', bookId);
-        await updateDoc(bookRef, updates);
-
-        // update the bookShelf state to reflect the updated document
-
-        setBookShelf((prevShelf) => {
-            return prevShelf.map((book) => {
-                if (book.id === bookId) {
-                    return { ...book, ...updates };
-                } else {
-                    return book;
-                }
-            });
-        });
-    };
 
     return (
         <main>
@@ -54,7 +37,7 @@ export default function BookShelf() {
 
             {loading
                 ? (<p>Loading...</p>)
-                : (<BookList bookShelf={bookShelf} updateBook={updateBook} />)}
+                : (<BookList bookShelf={bookShelf} />)}
         </main>
     )
 }
