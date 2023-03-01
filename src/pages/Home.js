@@ -20,7 +20,7 @@ export default function Home() {
             fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+
                     setBooks(data.items)
                 })
         }
@@ -35,7 +35,7 @@ export default function Home() {
             bookTitle: book.volumeInfo.title,
             bookAuthor: book.volumeInfo.authors.join(' '),
             bookImage: book.volumeInfo.imageLinks.thumbnail,
-            isBack: true,
+            isBack: false,
             isLent: false,
             isRead: true,
             lentToWhom: "",

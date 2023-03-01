@@ -39,18 +39,24 @@ export default function Book({ book, updateBook }) {
                     Is Lent:
                     <input type="checkbox" checked={isLent} onChange={(e) => setIsLent(e.target.checked)} />
                 </label>
-                <label>
-                    Lent To Whom:
-                    <input type="text" value={lentToWhom} onChange={(e) => setLentToWhom(e.target.value)} />
-                </label>
-                <label>
-                    Lent When:
-                    <input type="text" value={lentWhen} onChange={(e) => setLentWhen(e.target.value)} />
-                </label>
-                <label>
-                    Is Back:
-                    <input type="checkbox" checked={isBack} onChange={(e) => setIsBack(e.target.checked)} />
-                </label>
+
+                {isLent && <div>
+                    <input
+                        type="text"
+                        value={lentToWhom}
+                        onChange={(e) => setLentToWhom(e.target.value)}
+                        placeholder="Lent to"
+                    />
+
+                    <label>
+                        Lent When:
+                        <input type="text" value={lentWhen} onChange={(e) => setLentWhen(e.target.value)} />
+                    </label>
+                    <label>
+                        Is Back:
+                        <input type="checkbox" checked={isBack} onChange={(e) => setIsBack(e.target.checked)} />
+                    </label></div>}
+
 
                 <button onClick={handleUpdate}>Update Book</button>
             </div>
