@@ -32,11 +32,12 @@ export default function Header() {
                         <div className="closed">
                             <IoClose className='close' onClick={showElem} />
                         </div>
-                        <NavLink to="/">Home</NavLink>
-                        <NavLink to="about">About</NavLink>
-                        <NavLink to="bookshelf">My Bookshelf</NavLink>
-                        <NavLink to="signUp">Sign up</NavLink>
                         <NavLink to="#" onClick={showLogin}>Login</NavLink>
+                        <NavLink to="/" onClick={showElem}>Home</NavLink>
+                        <NavLink to="about" onClick={showElem}>About</NavLink>
+                        <NavLink to="bookshelf" onClick={showElem}>My Bookshelf</NavLink>
+                        <NavLink to="signUp" onClick={showElem}>Sign up</NavLink>
+
                         <div className={activeLogin ? ' loginContainer' : 'hiddenLogin'}>
                             <label>Login</label>
                             <input type="text" placeholder="Username" id="username" />

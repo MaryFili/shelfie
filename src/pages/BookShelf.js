@@ -32,7 +32,7 @@ export default function BookShelf() {
             <div className={styles.mainContainer}>
 
                 <h1>Welcome to your Bookshelf</h1>
-                <h2>Your books are:</h2>
+
             </div>
 
             {loading

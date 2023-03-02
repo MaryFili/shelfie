@@ -3,9 +3,9 @@ import styles from '../styles/Home.module.css'
 import SearchBar from '../components/SearchBar'
 
 import { collection, addDoc } from 'firebase/firestore';
-
 import { db } from '../firebase/config';
 
+import noCover from '../img/noCover.png'
 
 export default function Home() {
     const [search, setSearch] = useState('');
@@ -37,7 +37,7 @@ export default function Home() {
             bookImage: book.volumeInfo.imageLinks.thumbnail,
             isBack: false,
             isLent: false,
-            isRead: true,
+            isRead: false,
             lentToWhom: "",
             lentWhen: ""
         });
@@ -55,7 +55,7 @@ export default function Home() {
             <div className={styles.searchResults}>
                 {books.map(book => (
                     <div className={styles.card} key={book.id}>
-                        <img src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" />
+                        {book.volumeInfo.readingModes.image ? <img className={styles.bookImage} src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" /> : <img className={styles.bookImage} src={noCover} alt="book without cover" />}
                         <h1 className={styles.bookTitle}>{book.volumeInfo.title}</h1>
                         <h2 className={styles.bookAuthor}>{book.volumeInfo.authors}</h2>
                         <button onClick={() => handleAddBook(book)}>Add Book</button>
