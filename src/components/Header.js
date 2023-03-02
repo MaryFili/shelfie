@@ -34,10 +34,9 @@ export default function Header() {
                         <button className="loginBtn " to="#" onClick={() => setModalActiveLogin(true)}>Login</button>
                         {activeModalLogin && <LoginModal setModalActiveLogin={setModalActiveLogin} />}
                         <NavLink to="/" onClick={showElem}>Home</NavLink>
-                        <NavLink to="about" onClick={showElem}>About</NavLink>
                         <NavLink to="bookshelf" onClick={showElem}>My Bookshelf</NavLink>
+                        <NavLink to="about" onClick={showElem}>About</NavLink>
                     </div>
-
                 </nav>
 
             </div>
