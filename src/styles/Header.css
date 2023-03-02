@@ -61,6 +61,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 3em;
+    gap: 1.5em;
 }
 
 .links a {
@@ -82,21 +83,27 @@
 
 }
 
+.closed {
+    width: 100%;
 
 
+}
 
 .close {
-    /* display: block; */
-    margin: 0 auto;
-    font-size: 3em;
-
+    display: block;
+    /* margin: 0 auto; */
+    font-size: 2em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: .8em;
     color: #FFF;
 
 }
 
 .loginBtn {
     background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC 51%, #02AAB0 100%);
-    margin: 10px;
+    /* margin: 10px; */
+    margin: 3em;
     padding: 15px 45px;
     text-align: center;
 
