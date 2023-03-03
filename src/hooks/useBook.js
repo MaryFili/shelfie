@@ -1,31 +1,27 @@
-// import { useEffect, useState } from "react";
-// import { collection, getDocs } from 'firebase/firestore';
-// import { db } from '../firebase/config'
+import { useEffect, useState } from "react";
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config'
 
-// const useBook = (bookshelf) => {
-//     const [bookShelf, setBookShelf] = useState([]);
-//     const [loading, setLoading] = useState(true)
+const useBook = (c) => {
+    const [listOfBooks, setListOfBooks] = useState([]);
+    const [loading, setLoading] = useState(true)
 
-//     useEffect(() => {
-//         const getBooks = async () => {
-//             try {
-//                 setLoading(true);
-//                 const booksCollection = collection(db, 'bookshelf');
-//                 const querySnapshot = await getDocs(booksCollection);
-//                 const fetchedBooks = querySnapshot.docs.map((doc) => {
-//                     return { id: doc.id, ...doc.data() };
-//                 });
-//                 setBookShelf(fetchedBooks);
-//                 setLoading(false);
-//             } catch (error) {
-//                 console.error(error);
-//             }
-//         };
-//         getBooks();
-//     }, [bookshelf]);
-//     console.log({ bookShelf });
+    useEffect(() => {
+        const getBooks = async () => {
+            try {
+                setLoading(true);
+                const booksCollection = collection(db, c);
+                const data = await getDocs(booksCollection);
+                setListOfBooks(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getBooks();
+    }, [c]);
 
-//     return { bookShelf, loading }
+    return { listOfBooks, loading }
 
-// }
-// export default useBook;
+}
+export default useBook;
