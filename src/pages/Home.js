@@ -11,10 +11,7 @@ export default function Home() {
     const [search, setSearch] = useState('');
     const [books, setBooks] = useState([]);
 
-
-
-
-
+    //perform search and fetch data from google book api
     const searchBook = (e) => {
         if (e.key === 'Enter') {
             fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
@@ -24,10 +21,9 @@ export default function Home() {
                     setBooks(data.items)
                 })
         }
-    }
+    };
 
-
-
+    //add books to the bookshelf
     const handleAddBook = async (book) => {
 
         const blogRef = collection(db, 'bookshelf');
@@ -39,7 +35,20 @@ export default function Home() {
             isLent: false,
             isRead: false,
             lentToWhom: "",
-            lentWhen: ""
+            lentWhen: "",
+            isUpdate: true
+        });
+    };
+
+    //add books to the wishlist
+    const handleAddWishList = async (book) => {
+
+        const blogRef = collection(db, 'wishlist');
+        await addDoc(blogRef, {
+            bookTitle: book.volumeInfo.title,
+            bookAuthor: book.volumeInfo.authors.join(' '),
+            bookImage: book.volumeInfo.imageLinks.thumbnail,
+            comments: ""
         });
     }
 
@@ -58,8 +67,10 @@ export default function Home() {
                         {book.volumeInfo.readingModes.image ? <img className={styles.bookImage} src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" /> : <img className={styles.bookImage} src={noCover} alt="book without cover" />}
                         <h1 className={styles.bookTitle}>{book.volumeInfo.title}</h1>
                         <h2 className={styles.bookAuthor}>{book.volumeInfo.authors}</h2>
-                        <button onClick={() => handleAddBook(book)}>Add Book</button>
-
+                        <div className={styles.btnContainer}>
+                            <button onClick={() => handleAddBook(book)}>Add to Bookshelf</button>
+                            <button onClick={() => handleAddWishList(book)}>Add to WishList</button>
+                        </div>
                     </div>
                 ))}
             </div>

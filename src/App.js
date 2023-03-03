@@ -7,6 +7,7 @@ import About from './pages/About';
 import SignUp from './pages/SignUp';
 import NotFound from './pages/NotFound';
 import BookShelf from './pages/BookShelf';
+import WishList from './pages/WishList'
 
 
 //layout
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="bookshelf" element={<BookShelf />} />
+      <Route path="wishlist" element={<WishList />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   ))

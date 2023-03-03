@@ -3,18 +3,17 @@ import styles from '../styles/Home.module.css';
 // import Modal from './Modal';
 
 
-export default function BookList({ bookShelf }) {
-    const [isLent, setIsLent] = useState(bookShelf.map(book => book.isLent));
-    const [lentToWhom, setLentToWhom] = useState(bookShelf.map(book => book.lentToWhom))
-    const [lentWhen, setLentWhen] = useState(bookShelf.map(book => book.lentWhen))
-    const [isBack, setIsBack] = useState(bookShelf.map(book => book.isBack));
-    const [isRead, setIsRead] = useState(bookShelf.map(book => book.isRead));
+export default function BookList({ listOfBooks }) {
+    const [isLent, setIsLent] = useState(listOfBooks.map(book => book.isLent));
+    const [lentToWhom, setLentToWhom] = useState(listOfBooks.map(book => book.lentToWhom))
+    const [lentWhen, setLentWhen] = useState(listOfBooks.map(book => book.lentWhen))
+    const [isRead, setIsRead] = useState(listOfBooks.map(book => book.isRead));
     const [openModal, setOpenModal] = useState(false);
 
     return (
 
         <div className={styles.bookList}>
-            {bookShelf.map(book => (
+            {listOfBooks.map(book => (
                 <div className={styles.card} key={book.id}>
                     <img
                         className={styles.bookImage}
@@ -35,7 +34,11 @@ export default function BookList({ bookShelf }) {
                             <p>{book.lentWhen}</p>
                         </div>
                     }
-                    <button className={styles.openModalBtn} onClick={() => setOpenModal(true)}>Update your Book</button>
+                    {book.isUpdate &&
+
+                        <button className={styles.openModalBtn} onClick={() => setOpenModal(true)}>Update your Book</button>
+                    }
+
                     {openModal && <div className={styles.modalBackground}>
                         <div className={styles.modalContainer}>
                             <div className={styles.closeModal}>
@@ -78,8 +81,9 @@ export default function BookList({ bookShelf }) {
                     </div>
                     }
                 </div>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     )
 }
 

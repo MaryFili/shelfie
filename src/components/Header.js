@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoClose } from "react-icons/io5"
-import logo from '../img/shelfie.png'
+import logo from '../img/shelfieLogo.png'
 import '../styles/Header.css'
 import LoginModal from './LoginModal'
 
@@ -35,6 +35,7 @@ export default function Header() {
                         {activeModalLogin && <LoginModal setModalActiveLogin={setModalActiveLogin} />}
                         <NavLink to="/" onClick={showElem}>Home</NavLink>
                         <NavLink to="bookshelf" onClick={showElem}>My Bookshelf</NavLink>
+                        <NavLink to="wishlist" onClick={showElem}>My WishList</NavLink>
                         <NavLink to="about" onClick={showElem}>About</NavLink>
                     </div>
                 </nav>
