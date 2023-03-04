@@ -64,7 +64,8 @@ export default function Home() {
             <div className={styles.searchResults}>
                 {books.map(book => (
                     <div className={styles.card} key={book.id}>
-                        {book.volumeInfo.readingModes.image ? <img className={styles.bookImage} src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" /> : <img className={styles.bookImage} src={noCover} alt="book without cover" />}
+                        <div className={styles.bookImageWrapper}>
+                            {book.volumeInfo.readingModes.image ? <img className={styles.bookImage} src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" /> : <img className={styles.noCoverImage} src={noCover} alt="book without cover" />}</div>
                         <h1 className={styles.bookTitle}>{book.volumeInfo.title}</h1>
                         <h2 className={styles.bookAuthor}>{book.volumeInfo.authors}</h2>
                         <div className={styles.btnContainer}>

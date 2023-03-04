@@ -14,20 +14,20 @@ main {
     gap: 1em;
 }
 
-.searchResults {
+.searchResults,
+.bookList {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
     flex-wrap: wrap;
-    margin-top: 6em;
+
 }
 
 .card {
-    width: 30vw;
-    height: 80vh;
+    width: 60vw;
     background: rgba(255, 255, 255, 0.151);
     color: #000;
     display: flex;
@@ -38,13 +38,14 @@ main {
     border-radius: 1em;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     color: #fff;
-    flex-basis: auto;
+    padding: 20px;
+    /* flex-shrink: 0; */
 
 }
 
 .mainContainer h1,
 .mainContainer h2 {
-    font-size: 2em;
+    font-size: 1.4em;
     font-weight: 100;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -67,6 +68,8 @@ main {
     box-shadow: 0 0 4px #eee;
     border-radius: 20px;
     display: block;
+    /* flex-basis: 48%; */
+    max-width: 180px
 }
 
 button:hover {
@@ -85,19 +88,38 @@ button:hover {
     margin-top: 18em;
 }
 
+.noCoverImage {
+
+    max-width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+
+}
+
+
 .bookImage {
 
-    width: 200px;
-    height: 300px
+
+    max-width: 300px;
+    height: 250px;
+
+
 }
 
 .bookTitle {
     text-align: center;
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 .bookAuthor {
     font-size: 1.5em;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* modal styling */
@@ -173,4 +195,120 @@ button:hover {
     margin: .5em;
     padding: 5px;
 
+}
+
+@media screen and (min-width:1000px) {
+
+
+
+
+    .searchResults {
+        gap: 1em;
+        margin-top: 6em;
+    }
+
+    .card {
+        width: 30vw;
+        height: 80vh;
+        /* flex-shrink: 0; */
+
+    }
+
+
+
+    .noCoverImage {
+
+        width: 150px;
+        max-width: 300px;
+        height: 200px;
+        flex-shrink: 0;
+
+    }
+
+    .bookTitle {
+
+        font-size: clamp(1.2rem, 1.6vw, 3rem);
+
+
+    }
+
+    .bookAuthor {
+        font-size: clamp(1rem, 1.3vw, 3rem);
+
+    }
+
+    /* modal styling */
+
+    .modalBackground {
+        background-color: rgba(197, 229, 255, 0.315);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+
+
+    }
+
+    .modalContainer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 500px;
+
+    }
+
+    .modalContainer h2 {
+        text-align: center;
+    }
+
+    .closeModal {
+        margin-left: auto;
+    }
+
+    .modalContainer button {
+
+        padding: 7px;
+        display: inline;
+        border-radius: 20px;
+    }
+
+    .closeModal button {
+        width: 30px;
+        height: 30px;
+
+        border-radius: 50px;
+
+    }
+
+    .readBtn,
+    .lentBtn,
+    .saveBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5em;
+    }
+
+    .lentBtn button {
+        margin-right: 20px;
+
+    }
+
+    .lentQuestions input {
+        margin: .5em;
+        padding: 5px;
+
+    }
 }
