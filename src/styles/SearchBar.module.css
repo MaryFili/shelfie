@@ -36,8 +36,8 @@
     cursor: pointer;
     border-radius: 50%;
     position: absolute;
-    /* right: 8px;
-    top: 12px; */
+    right: 6px;
+    top: 4px;
     right: 0px;
     color: #ffffff;
     background-color: transparent;
