@@ -66,7 +66,7 @@ export default function Home() {
                     <div className={styles.card} key={book.id}>
                         <div className={styles.bookImageWrapper}>
                             {book.volumeInfo.readingModes.image ? <img className={styles.bookImage} src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" /> : <img className={styles.noCoverImage} src={noCover} alt="book without cover" />}</div>
-                        <h1 className={styles.bookTitle}>{book.volumeInfo.title}</h1>
+                        <h1 className={styles.bookTitle}>{book.volumeInfo.title.substring(0, 80)}</h1>
                         <h2 className={styles.bookAuthor}>{book.volumeInfo.authors}</h2>
                         <div className={styles.btnContainer}>
                             <button onClick={() => handleAddBook(book)}>Add to Bookshelf</button>

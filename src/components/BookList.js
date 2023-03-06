@@ -179,14 +179,19 @@ export default function BookList({ listOfBooks }) {
                     <img className={styles.bookImage} src={book.bookImage} alt="book post" />
                     <h2 className={styles.bookTitle}>{book.bookTitle}</h2>
                     <h4 className={styles.bookAuthor}> {book.bookAuthor}</h4>
-                    {bookStates[index].isRead && <p>Read</p>}
-                    {!bookStates[index].isRead && <p>Not Read</p>}
+                    <div className={styles.isRead}>
+                        {bookStates[index].isRead && <p className={styles.readStatus}>Read</p>}
+                        {!bookStates[index].isRead && <p className={styles.notReadStatus}>Not Read</p>}
+                    </div>
                     {bookStates[index].isLent && (
                         <div className={styles.lentTo}>
-                            <p>Book Lent To: {bookStates[index].lentToWhom}</p>
-                            <p>on the {bookStates[index].lentWhen}</p>
+                            <p>Lent to: {bookStates[index].lentToWhom}</p>
+                            <p>On the: {bookStates[index].lentWhen}</p>
                         </div>
+
                     )}
+
+
 
                     <button
                         className={styles.openModalBtn}
