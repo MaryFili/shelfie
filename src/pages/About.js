@@ -3,7 +3,7 @@ import styles from '../styles/About.module.css'
 
 export default function About() {
     return (
-        <div className={styles.mainContainer}>
+        <div className={styles.mainAboutContainer}>
             <div className={styles.textContainer}>
                 <h1>Welcome to Shelfie</h1>
                 <h2>The leading online community for book aficionados!</h2>

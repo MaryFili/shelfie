@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styles from '../styles/Home.module.css';
-// import Modal from './Modal';
+
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { db } from '../firebase/config'
 
 
 export default function BookList({ listOfBooks }) {
