@@ -6,10 +6,11 @@ import Home from './pages/Home';
 import About from './pages/About';
 import SignUp from './pages/SignUp';
 import NotFound from './pages/NotFound';
-import BookShelf from './pages/BookShelf';
-import WishList from './pages/WishList'
+import { BookShelf } from './pages/BookShelf';
+import { WishList } from './pages/WishList'
 
-
+import { getBooksLoader } from './pages/BookShelf';
+import { getWishBooksLoader } from './pages/WishList';
 //layout
 import RootLayout from './Layout/RootLayout';
 
@@ -20,8 +21,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="signup" element={<SignUp />} />
-      <Route path="bookshelf" element={<BookShelf />} />
-      <Route path="wishlist" element={<WishList />} />
+      <Route path="bookshelf" element={<BookShelf />} loader={getBooksLoader} />
+      <Route path="wishlist" element={<WishList />} loader={getWishBooksLoader} />
       <Route path="*" element={<NotFound />} />
     </Route>
   ))

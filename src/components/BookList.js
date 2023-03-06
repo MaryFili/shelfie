@@ -12,6 +12,33 @@ export default function BookList({ listOfBooks }) {
     const [isRead, setIsRead] = useState(listOfBooks.map(book => book.isRead));
     const [openModal, setOpenModal] = useState(false);
 
+    const [isUpdating, setIsUpdating] = useState(false);
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+        setIsUpdating(false);
+    }
+    const handleIsLent = (value) => {
+        setIsLent(value);
+        setIsUpdating(true);
+    }
+    const handleIsRead = (value) => {
+        setIsRead(value);
+        setIsUpdating(true);
+    }
+
+    const handleSave = async (book) => {
+        const bookRef = doc(db, 'bookshelf', book.id);
+        const updatedBook = {
+            ...book,
+            isRead,
+            isLent,
+            lentToWhom: isLent ? lentToWhom : '',
+            lentWhen: isLent ? lentWhen : ''
+        };
+        await updateDoc(bookRef, updatedBook);
+        handleCloseModal();
+    }
     return (
 
         <div className={styles.bookList}>
@@ -30,10 +57,10 @@ export default function BookList({ listOfBooks }) {
                     {!book.isRead && <p>Not Read</p>}
 
                     {book.isLent &&
-                        <div>
-                            <p>Book Lent To:</p>
-                            <p>{book.lentToWhom}</p>
-                            <p>{book.lentWhen}</p>
+                        <div className={styles.lentTo}>
+
+                            <p>Book Lent To: {book.lentToWhom}</p>
+                            <p>on the {book.lentWhen}</p>
                         </div>
                     }
                     {book.isUpdate &&
@@ -44,21 +71,21 @@ export default function BookList({ listOfBooks }) {
                     {openModal && <div className={styles.modalBackground}>
                         <div className={styles.modalContainer}>
                             <div className={styles.closeModal}>
-                                <button onClick={() => setOpenModal(false)}>X</button>
+                                <button onClick={handleCloseModal}>X</button>
                             </div>
                             <div className={styles.readStatus}>
                                 <h2>Have you read this book?</h2>
                                 <div className={styles.readBtn}>
-                                    <button onClick={() => setIsRead(true)}>Yes</button>
-                                    <button onClick={() => setIsRead(false)}>Not yet</button>
+                                    <button onClick={() => handleIsRead(true)}>Yes</button>
+                                    <button onClick={() => handleIsRead(false)}>Not yet</button>
                                 </div>
 
                             </div>
                             <div className={styles.lentStatus}>
                                 <h2>Have you lent this book to someone?</h2>
                                 <div className={styles.lentBtn}>
-                                    <button onClick={() => setIsLent(true)}>Yes</button>
-                                    <button onClick={() => setIsLent(false)}>Nope</button>
+                                    <button onClick={() => handleIsLent(true)}>Yes</button>
+                                    <button onClick={() => handleIsLent(false)}>Nope</button>
                                 </div>
                                 {isLent &&
                                     <div className={styles.lentQuestions}>
@@ -72,12 +99,13 @@ export default function BookList({ listOfBooks }) {
                                             // value={book.lentWhen}
                                             onChange={(e) => setLentWhen(e.target.value)}
                                         />
-                                        <div className={styles.saveBtn}>
-                                            <button onClick={() => console.log(book)}>Save</button>
 
-                                        </div>
                                     </div>
                                 }
+                                <div className={styles.saveBtn}>
+                                    <button onClick={() => handleSave(book)}>Save</button>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,6 +116,12 @@ export default function BookList({ listOfBooks }) {
         </div >
     )
 }
+
+
+
+
+
+
 
 
 

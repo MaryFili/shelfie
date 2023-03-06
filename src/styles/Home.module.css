@@ -254,6 +254,14 @@ button:hover {
 
     }
 
+
+    .lentTo p {
+        font-size: clamp(1rem, 1vw, 3rem);
+        padding: 0;
+        text-align: left;
+
+    }
+
     /* modal styling */
 
     .modalBackground {

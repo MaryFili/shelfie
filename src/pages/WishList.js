@@ -1,11 +1,13 @@
 import BookList from '../components/BookList';
-import useBook from '../hooks/useBook'
 import styles from '../styles/Home.module.css'
+import { collection, getDocs } from 'firebase/firestore';
+import { useLoaderData } from 'react-router-dom';
+import { db } from '../firebase/config'
 
+function WishList() {
 
-export default function BookShelf() {
+    const listOfBooks = useLoaderData()
 
-    const { listOfBooks, loading } = useBook('wishlist')
 
     return (
         <main>
@@ -13,9 +15,23 @@ export default function BookShelf() {
                 <h1>Welcome to your WishList</h1>
             </div>
 
-            {loading
-                ? (<p className={styles.loading}>Loading...</p>)
-                : (<BookList listOfBooks={listOfBooks} />)}
+
+            <BookList listOfBooks={listOfBooks} />
         </main>
     )
 }
+
+
+const getWishBooksLoader = async () => {
+    try {
+        const booksCollection = collection(db, 'wishlist');
+        const data = await getDocs(booksCollection);
+        return (data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+
+export { getWishBooksLoader, WishList }
