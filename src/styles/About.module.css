@@ -32,11 +32,13 @@ h1 {
 .mainAboutContainer h2 {
     text-transform: uppercase;
     text-align: center;
-    font-family: 'Poiret One', cursive;
-    font-weight: 700;
+
+    font-family: 'Eczar', serif;
+
+    font-weight: 500;
 
 }
 
 p {
-    font-size: clamp(1rem, 1.3vw, 3rem);
+    font-size: clamp(1rem, 1.1vw, 3rem);
 }

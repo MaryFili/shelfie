@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar&family=Neucha&family=Poiret+One&display=swap');
+
 main {
     height: 100%
 }
@@ -29,7 +31,8 @@ main {
 .loading {
     text-align: center;
     font-size: 2rem;
-    font-family: 'Poiret One', cursive;
+    font-family: 'Eczar', serif;
+
     text-transform: uppercase;
 }
 
@@ -52,9 +55,11 @@ main {
 
 .mainContainer h1,
 .mainContainer h2 {
-    font-family: 'Poiret One', cursive;
-    font-size: 2em;
-    font-weight: 900;
+    /* font-family: 'Poiret One', cursive; */
+    font-family: 'Eczar', serif;
+
+    font-size: 1.7em;
+    font-weight: 100;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
@@ -227,7 +232,7 @@ button:hover {
 
     .searchResults {
         gap: 1em;
-        margin-top: 6em;
+        margin-top: 18em;
     }
 
     .card {
