@@ -17,7 +17,6 @@ export default function Home() {
             fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
                 .then(res => res.json())
                 .then(data => {
-
                     setBooks(data.items)
                     setSearch("")
                 })
@@ -26,7 +25,6 @@ export default function Home() {
 
     //add books to the bookshelf
     const handleAddBook = async (book) => {
-
         const blogRef = collection(db, 'bookshelf');
         await addDoc(blogRef, {
             bookTitle: book.volumeInfo.title,
@@ -43,7 +41,6 @@ export default function Home() {
 
     //add books to the wishlist
     const handleAddWishList = async (book) => {
-
         const blogRef = collection(db, 'wishlist');
         await addDoc(blogRef, {
             bookTitle: book.volumeInfo.title,
