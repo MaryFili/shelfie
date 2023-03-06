@@ -1,4 +1,10 @@
-.mainContainer {
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Poiret+One&display=swap');
+
+
+
+
+
+.mainAboutContainer {
     display: flex;
     justify-content: center;
 }
@@ -22,10 +28,12 @@ h1 {
 
 }
 
-h1,
-h2 {
+.mainAboutContainer h1,
+.mainAboutContainer h2 {
     text-transform: uppercase;
     text-align: center;
+    font-family: 'Poiret One', cursive;
+    font-weight: 700;
 
 }
 

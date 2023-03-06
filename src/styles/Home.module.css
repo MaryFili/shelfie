@@ -26,6 +26,13 @@ main {
 
 }
 
+.loading {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+}
+
 .card {
     width: 60vw;
     background: rgba(255, 255, 255, 0.151);
@@ -45,8 +52,9 @@ main {
 
 .mainContainer h1,
 .mainContainer h2 {
-    font-size: 1.4em;
-    font-weight: 100;
+    font-family: 'Poiret One', cursive;
+    font-size: 2em;
+    font-weight: 900;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
