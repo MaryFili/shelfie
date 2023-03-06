@@ -41,7 +41,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3em;
+    gap: 1em;
     border-radius: 1em;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -122,6 +122,22 @@ button:hover {
 .bookAuthor {
     font-size: 1.5em;
 }
+
+.lentTo p,
+.readStatus,
+.notReadStatus {
+    font-size: clamp(1rem, .8vw, 3rem);
+    padding: 0;
+    text-align: center;
+}
+
+.readStatus,
+.notReadStatus {
+    margin-top: .5rem;
+}
+
+
+
 
 .btnContainer {
     display: flex;
@@ -222,6 +238,7 @@ button:hover {
     }
 
 
+
     .bookImage {
 
         min-width: 0;
@@ -244,15 +261,16 @@ button:hover {
 
     .bookTitle {
 
-        font-size: clamp(1.2rem, 1.3vw, 3rem);
+        font-size: clamp(1.2rem, 1.1vw, 3rem);
 
 
     }
 
     .bookAuthor {
-        font-size: clamp(1rem, 1.3vw, 3rem);
+        font-size: clamp(1rem, 1vw, 3rem);
 
     }
+
 
     /* modal styling */
 
