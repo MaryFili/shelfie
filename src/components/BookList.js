@@ -120,7 +120,7 @@
 
 import React, { useState } from 'react';
 import styles from '../styles/Home.module.css';
-import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 export default function BookList({ listOfBooks }) {

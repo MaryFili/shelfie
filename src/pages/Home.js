@@ -19,6 +19,7 @@ export default function Home() {
                 .then(data => {
 
                     setBooks(data.items)
+                    setSearch("")
                 })
         }
     };
@@ -58,7 +59,7 @@ export default function Home() {
                 <h1>Find your Books</h1>
                 <h2>And </h2>
                 <h2> add them to your</h2>
-                <h2>Online Library</h2>
+                <h2>Online Bookshelf</h2>
                 <SearchBar search={search} setSearch={setSearch} searchBook={searchBook} />
             </div>
             <div className={styles.searchResults}>
