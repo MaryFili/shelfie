@@ -201,7 +201,6 @@ button:hover {
 
 
 
-
     .searchResults {
         gap: 1em;
         margin-top: 6em;
@@ -215,6 +214,16 @@ button:hover {
     }
 
 
+    .bookImage {
+
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        /* max-width: 200px;
+        height: 200px; */
+
+
+    }
 
     .noCoverImage {
 
@@ -227,7 +236,7 @@ button:hover {
 
     .bookTitle {
 
-        font-size: clamp(1.2rem, 1.6vw, 3rem);
+        font-size: clamp(1.2rem, 1.3vw, 3rem);
 
 
     }
