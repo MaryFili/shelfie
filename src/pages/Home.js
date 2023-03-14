@@ -22,6 +22,17 @@ export default function Home() {
                 })
         }
     };
+    const searchOnClick = () => {
+
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data.items)
+                setSearch("")
+            })
+    }
+
+
 
     //add books to the bookshelf
     const handleAddBook = async (book) => {
@@ -57,7 +68,7 @@ export default function Home() {
                 <h2>And </h2>
                 <h2> add them to your</h2>
                 <h2>Online Bookshelf</h2>
-                <SearchBar search={search} setSearch={setSearch} searchBook={searchBook} />
+                <SearchBar search={search} setSearch={setSearch} searchBook={searchBook} searchOnClick={searchOnClick} />
             </div>
             <div className={styles.searchResults}>
                 {books.map(book => (
