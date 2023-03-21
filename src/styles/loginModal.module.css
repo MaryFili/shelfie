@@ -24,17 +24,22 @@
     flex-direction: column;
     align-items: center;
     width: 400px;
-    height: 500px;
+    height: 550px;
 
 }
 
-.loginModalContainer {
+.loginModalContainer,
+.signUpModalContainer {
     margin: 2em;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+
+.signUpModalContainer {
     gap: 2em
 }
 

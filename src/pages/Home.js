@@ -17,15 +17,25 @@ export default function Home() {
             fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
                 .then(res => res.json())
                 .then(data => {
-
                     setBooks(data.items)
+                    setSearch("")
                 })
         }
     };
+    const searchOnClick = () => {
+
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data.items)
+                setSearch("")
+            })
+    }
+
+
 
     //add books to the bookshelf
     const handleAddBook = async (book) => {
-
         const blogRef = collection(db, 'bookshelf');
         await addDoc(blogRef, {
             bookTitle: book.volumeInfo.title,
@@ -42,7 +52,6 @@ export default function Home() {
 
     //add books to the wishlist
     const handleAddWishList = async (book) => {
-
         const blogRef = collection(db, 'wishlist');
         await addDoc(blogRef, {
             bookTitle: book.volumeInfo.title,
@@ -58,15 +67,15 @@ export default function Home() {
                 <h1>Find your Books</h1>
                 <h2>And </h2>
                 <h2> add them to your</h2>
-                <h2>Online Library</h2>
-                <SearchBar search={search} setSearch={setSearch} searchBook={searchBook} />
+                <h2>Online Bookshelf</h2>
+                <SearchBar search={search} setSearch={setSearch} searchBook={searchBook} searchOnClick={searchOnClick} />
             </div>
             <div className={styles.searchResults}>
                 {books.map(book => (
                     <div className={styles.card} key={book.id}>
                         <div className={styles.bookImageWrapper}>
                             {book.volumeInfo.readingModes.image ? <img className={styles.bookImage} src={book.volumeInfo.imageLinks.thumbnail} alt="book cover" /> : <img className={styles.noCoverImage} src={noCover} alt="book without cover" />}</div>
-                        <h1 className={styles.bookTitle}>{book.volumeInfo.title}</h1>
+                        <h1 className={styles.bookTitle}>{book.volumeInfo.title.substring(0, 80)}</h1>
                         <h2 className={styles.bookAuthor}>{book.volumeInfo.authors}</h2>
                         <div className={styles.btnContainer}>
                             <button onClick={() => handleAddBook(book)}>Add to Bookshelf</button>
