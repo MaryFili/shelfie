@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar&family=Neucha&family=Poiret+One&display=swap');
+
 main {
     height: 100%
 }
@@ -29,7 +31,8 @@ main {
 .loading {
     text-align: center;
     font-size: 2rem;
-    font-family: 'Poiret One', cursive;
+    font-family: 'Eczar', serif;
+
     text-transform: uppercase;
 }
 
@@ -41,7 +44,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3em;
+    gap: 1em;
     border-radius: 1em;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -52,9 +55,10 @@ main {
 
 .mainContainer h1,
 .mainContainer h2 {
-    font-family: 'Poiret One', cursive;
-    font-size: 2em;
-    font-weight: 900;
+    /* font-family: 'Poiret One', cursive; */
+    font-family: 'Eczar', serif;
+    font-size: 1.8em;
+    font-weight: 100;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
@@ -122,6 +126,22 @@ button:hover {
 .bookAuthor {
     font-size: 1.5em;
 }
+
+.lentTo p,
+.readStatus,
+.notReadStatus {
+    font-size: clamp(1rem, .8vw, 3rem);
+    padding: 0;
+    text-align: center;
+}
+
+.readStatus,
+.notReadStatus {
+    margin-top: .5rem;
+}
+
+
+
 
 .btnContainer {
     display: flex;
@@ -211,7 +231,7 @@ button:hover {
 
     .searchResults {
         gap: 1em;
-        margin-top: 6em;
+        margin-top: 18em;
     }
 
     .card {
@@ -220,6 +240,7 @@ button:hover {
         /* flex-shrink: 0; */
 
     }
+
 
 
     .bookImage {
@@ -244,15 +265,16 @@ button:hover {
 
     .bookTitle {
 
-        font-size: clamp(1.2rem, 1.3vw, 3rem);
+        font-size: clamp(1.2rem, 1.1vw, 3rem);
 
 
     }
 
     .bookAuthor {
-        font-size: clamp(1rem, 1.3vw, 3rem);
+        font-size: clamp(1rem, 1vw, 3rem);
 
     }
+
 
     /* modal styling */
 
