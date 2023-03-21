@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import styles from '../styles/loginModal.module.css'
 import { NavLink } from 'react-router-dom'
+import useLogin from '../hooks/useLogin';
 
 
 export default function LoginModal({ setModalActiveLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { error, login } = useLogin()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(email, password);
+        login(email, password)
     }
     return (
         <div className={styles.modalBackground}>
@@ -33,10 +35,11 @@ export default function LoginModal({ setModalActiveLogin }) {
                             value={password}
                             placeholder="Password" id="password" />
                         <button>Login</button>
+                        {error && <p>{error}</p>}
                     </form>
                     <div className={styles.register}>
                         <p>Not registered yet?</p>
-                        <NavLink className={styles.SignUp} id={styles.signUp} to="signUp">Sign up</NavLink>
+                        <NavLink className={styles.SignUp} id={styles.signUp} to="signUp" onClick={() => setModalActiveLogin(false)}>Sign up</NavLink>
                     </div>
                 </div>
             </div>
