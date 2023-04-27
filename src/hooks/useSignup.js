@@ -15,6 +15,7 @@ export default function useSignup() {
         setError(null)//reset the error everytime a new user signs up
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                dispatch({ type: 'LOGIN', payload: userCredential.user })
                 console.log('user signed up:', userCredential.user);
             })
             .catch((err) => {

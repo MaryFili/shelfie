@@ -5,11 +5,13 @@ import { IoClose } from "react-icons/io5"
 import logo from '../img/shelfieLogo3.png'
 import '../styles/Header.css'
 import LoginModal from './LoginModal'
+import { useLogout } from '../hooks/useLogout'
 
 export default function Header() {
 
-    const [active, setActive] = useState(false)
-    const [activeModalLogin, setModalActiveLogin] = useState(false)
+    const [active, setActive] = useState(false);
+    const [activeModalLogin, setModalActiveLogin] = useState(false);
+    const { logout } = useLogout();
 
     const showElem = () => {
         setActive(!active)
@@ -37,6 +39,7 @@ export default function Header() {
                         <NavLink to="bookshelf" onClick={showElem}> My BookShelf</NavLink>
                         <NavLink to="wishlist" onClick={showElem}>My WishList</NavLink>
                         <NavLink to="about" onClick={showElem}>About</NavLink>
+                        <p onClick={logout}>Logout</p>
                     </div>
                 </nav>
 
