@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import SearchBar from '../components/SearchBar'
+import { Navigate } from 'react-router-dom';
 
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
@@ -12,7 +13,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 export default function Home() {
     const [search, setSearch] = useState('');
     const [books, setBooks] = useState([]);
-    const { user } = useAuthContext;
+    const { user } = useAuthContext();
     const [openModal, setOpenModal] = useState(false)
 
     //perform search and fetch data from google book api
@@ -54,7 +55,8 @@ export default function Home() {
                 isRead: false,
                 lentToWhom: "",
                 lentWhen: "",
-                isUpdate: true
+                isUpdate: true,
+                uid: user.uid
             });
         }
 
@@ -71,7 +73,8 @@ export default function Home() {
                 bookTitle: book.volumeInfo.title,
                 bookAuthor: book.volumeInfo.authors.join(' '),
                 bookImage: book.volumeInfo.imageLinks.thumbnail,
-                comments: ""
+                comments: "",
+                uid: user.uid
             });
         }
 

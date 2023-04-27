@@ -2,13 +2,13 @@ import React from 'react';
 import BookList from '../components/BookList';
 
 import useBook from '../hooks/useBook'
-
+import { useAuthContext } from '../hooks/useAuthContext';
 import styles from '../styles/Home.module.css'
 
 
 export default function BookShelf() {
-
-    const { listOfBooks, loading } = useBook('bookshelf')
+    const { user } = useAuthContext();
+    const { listOfBooks, loading } = useBook('bookshelf', ['uid', '==', user.uid])
 
     return (
         <main>
