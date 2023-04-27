@@ -32,8 +32,8 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="signup" element={!user ? <SignUp /> : (<Navigate to="/bookshelf" />)} />
         <Route path="login" element={!user ? <LoginModal /> : (<Navigate to="/bookshelf" />)} />
-        <Route path="bookshelf" element={user ? <BookShelf /> : (<Navigate to="/login" />)} />
-        <Route path="wishlist" element={user ? <WishList /> : (<Navigate to="/login" />)} />
+        <Route path="bookshelf" element={user ? <BookShelf /> : (<Navigate to="/" />)} />
+        <Route path="wishlist" element={user ? <WishList /> : (<Navigate to="/" />)} />
         <Route path="*" element={<NotFound />} />
       </Route>
     ))
