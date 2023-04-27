@@ -6,15 +6,18 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 import noCover from '../img/noCover.png'
-
+import { APIKEY } from '../config/environment'
+import { useAuthContext } from '../hooks/useAuthContext';
 export default function Home() {
     const [search, setSearch] = useState('');
     const [books, setBooks] = useState([]);
+    const { user } = useAuthContext;
+    const [openModal, setOpenModal] = useState(false)
 
     //perform search and fetch data from google book api
     const searchBook = (e) => {
         if (e.key === 'Enter') {
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${APIKEY}`)
                 .then(res => res.json())
                 .then(data => {
                     setBooks(data.items)
@@ -24,7 +27,7 @@ export default function Home() {
     };
     const searchOnClick = () => {
 
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${APIKEY}`)
             .then(res => res.json())
             .then(data => {
                 setBooks(data.items)
@@ -36,29 +39,41 @@ export default function Home() {
 
     //add books to the bookshelf
     const handleAddBook = async (book) => {
-        const blogRef = collection(db, 'bookshelf');
-        await addDoc(blogRef, {
-            bookTitle: book.volumeInfo.title,
-            bookAuthor: book.volumeInfo.authors.join(' '),
-            bookImage: book.volumeInfo.imageLinks.thumbnail,
-            isBack: false,
-            isLent: false,
-            isRead: false,
-            lentToWhom: "",
-            lentWhen: "",
-            isUpdate: true
-        });
+        if (!user) {
+            setOpenModal(true)
+        }
+        else {
+            const blogRef = collection(db, 'bookshelf');
+            await addDoc(blogRef, {
+                bookTitle: book.volumeInfo.title,
+                bookAuthor: book.volumeInfo.authors.join(' '),
+                bookImage: book.volumeInfo.imageLinks.thumbnail,
+                isBack: false,
+                isLent: false,
+                isRead: false,
+                lentToWhom: "",
+                lentWhen: "",
+                isUpdate: true
+            });
+        }
+
     };
 
     //add books to the wishlist
     const handleAddWishList = async (book) => {
-        const blogRef = collection(db, 'wishlist');
-        await addDoc(blogRef, {
-            bookTitle: book.volumeInfo.title,
-            bookAuthor: book.volumeInfo.authors.join(' '),
-            bookImage: book.volumeInfo.imageLinks.thumbnail,
-            comments: ""
-        });
+        if (!user) {
+            setOpenModal(true)
+        }
+        else {
+            const blogRef = collection(db, 'wishlist');
+            await addDoc(blogRef, {
+                bookTitle: book.volumeInfo.title,
+                bookAuthor: book.volumeInfo.authors.join(' '),
+                bookImage: book.volumeInfo.imageLinks.thumbnail,
+                comments: ""
+            });
+        }
+
     }
 
     return (
@@ -81,6 +96,14 @@ export default function Home() {
                             <button onClick={() => handleAddBook(book)}>Add to Bookshelf</button>
                             <button onClick={() => handleAddWishList(book)}>Add to WishList</button>
                         </div>
+                        {openModal && (
+                            <div className={styles.modalBackground}>
+                                <div className={styles.modalContainer}>
+                                    <div className={styles.loginCloseBtn}> <button onClick={() => setOpenModal(false)}>X</button>
+                                    </div>
+                                    <p>Please log in or create an account to start adding</p>
+                                </div>
+                            </div>)}
                     </div>
                 ))}
             </div>

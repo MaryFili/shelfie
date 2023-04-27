@@ -14,7 +14,7 @@ import WishList from './pages/WishList'
 import RootLayout from './Layout/RootLayout';
 import { useAuthContext } from './hooks/useAuthContext';
 import LoginModal from './pages/Login';
-// import ProtectedRoutes from './components/ProtectedRoutes';
+
 
 
 
