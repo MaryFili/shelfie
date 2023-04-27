@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { APIKEY } from '../config/environment';
 
 import noCover from '../img/noCover.png'
 
@@ -14,7 +15,7 @@ export default function Home() {
     //perform search and fetch data from google book api
     const searchBook = (e) => {
         if (e.key === 'Enter') {
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${APIKEY}`)
                 .then(res => res.json())
                 .then(data => {
                     setBooks(data.items)
@@ -24,7 +25,7 @@ export default function Home() {
     };
     const searchOnClick = () => {
 
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyB8aM5bhf7EoM3pGpZ6-jpPdGUFDs5PDfU`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${APIKEY}`)
             .then(res => res.json())
             .then(data => {
                 setBooks(data.items)
