@@ -7,7 +7,7 @@ import { db } from '../firebase/config';
 import { APIKEY } from '../config/environment';
 
 import noCover from '../img/noCover.png'
-import { APIKEY } from '../config/environment'
+
 import { useAuthContext } from '../hooks/useAuthContext';
 export default function Home() {
     const [search, setSearch] = useState('');
