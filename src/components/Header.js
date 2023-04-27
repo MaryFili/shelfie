@@ -6,12 +6,14 @@ import logo from '../img/shelfieLogo3.png'
 import '../styles/Header.css'
 import LoginModal from './LoginModal'
 import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export default function Header() {
 
     const [active, setActive] = useState(false);
     const [activeModalLogin, setModalActiveLogin] = useState(false);
     const { logout } = useLogout();
+    const { user, authIsReady } = useAuthContext();
 
     const showElem = () => {
         setActive(!active)
@@ -33,13 +35,15 @@ export default function Header() {
                         <div className="closed">
                             <IoClose className='close' onClick={showElem} />
                         </div>
-                        <button className="loginBtn " to="#" onClick={() => setModalActiveLogin(true)}>Login</button>
-                        {activeModalLogin && <LoginModal setModalActiveLogin={setModalActiveLogin} />}
+                        {/* <button className="loginBtn " to="#" onClick={() => setModalActiveLogin(true)}>Login</button>
+                        {activeModalLogin && <LoginModal setModalActiveLogin={setModalActiveLogin} />} */}
                         <NavLink to="/" onClick={showElem}>Home</NavLink>
+                        <NavLink to="login" onClick={showElem}>Login</NavLink>
+                        <NavLink to="signup" onClick={showElem}>Sign Up</NavLink>
                         <NavLink to="bookshelf" onClick={showElem}> My BookShelf</NavLink>
                         <NavLink to="wishlist" onClick={showElem}>My WishList</NavLink>
                         <NavLink to="about" onClick={showElem}>About</NavLink>
-                        <p onClick={logout}>Logout</p>
+                        {user && <p onClick={logout}>Logout</p>}
                     </div>
                 </nav>
 

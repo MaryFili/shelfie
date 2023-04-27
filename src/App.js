@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from 'react-router-dom';
 import './App.css';
 
 //pages
@@ -12,25 +12,39 @@ import WishList from './pages/WishList'
 
 //layout
 import RootLayout from './Layout/RootLayout';
+import { useAuthContext } from './hooks/useAuthContext';
+import LoginModal from './pages/Login';
+// import ProtectedRoutes from './components/ProtectedRoutes';
 
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="bookshelf" element={<BookShelf />} />
-      <Route path="wishlist" element={<WishList />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
-  ))
+
 
 
 
 function App() {
+  const { user, authIsReady } = useAuthContext();
+
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="signup" element={!user ? <SignUp /> : (<Navigate to="/bookshelf" />)} />
+        <Route path="login" element={!user ? <LoginModal /> : (<Navigate to="/bookshelf" />)} />
+        <Route path="bookshelf" element={user ? <BookShelf /> : (<Navigate to="/login" />)} />
+        <Route path="wishlist" element={user ? <WishList /> : (<Navigate to="/login" />)} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    ))
+
+
+
+
   return (
-    <RouterProvider router={router} />
+    <>
+      {authIsReady && <RouterProvider router={router} />}
+    </>
   );
 }
 
