@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { APIKEY } from '../config/environment';
 
 import noCover from '../img/noCover.png'
 import { APIKEY } from '../config/environment'
